@@ -242,3 +242,13 @@
     color: var(--spotify-grey);
     font-size: 12px;
   }
+  .playlist-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    transition: all 0.2s ease;
+  }
+  .controls .btn:hover {
+    color: var(--spotify-green);
+    transform: scale(1.2);
+    transition: all 0.2s ease;
+  }
