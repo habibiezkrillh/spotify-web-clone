@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Spotify</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Spotify</h2>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Search</a></li>
+                    <li><a href="#">Your Library</a></li>
+                </ul>
+            </nav>
+            <div class="playlist">
+                <h3>Playlists</h3>
+                <ul>
+                    <li><a href="#">Chill Hits</a></li>
+                    <li><a href="#">Focus Flow</a></li>
+                    <li><a href="#">Top 50</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Content Placeholder -->
+        <main class="main-content">
+            <section class="hero">
+                <h1>Good Evening</h1>
+                <div class="quick-playlists">
+                    <div class="playlist-card">
+                        <img src="assets/images/album1.jpeg" alt="Playlist Cover">
+                        <p>Chill Vibes</p>
+                    </div>
+                    <div class="playlist-card">
+                        <img src="assets/images/album2.jpg" alt="Playlist Cover">
+                        <p>Top Hits</p>
+                    </div>
+                    <div class="playlist-card">
+                        <img src="assets/images/album3.jpeg" alt="Playlist Cover">
+                        <p>Galau Bareng</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="recommendations">
+                <h2>Recommended for You</h2>
+                <div class="recommendation-list">
+                    <div class="recommendation-card">
+                        <img src="assets/images/album3.jpeg" alt="Album Cover">
+                        <p>Nicole</p>
+                        <span>NIKI</span>
+                    </div>
+                    <div class="recommendation-card">
+                        <img src="assets/images/album2.jpg" alt="Album Cover">
+                        <p>More Life</p>
+                        <span>Drake</span>
+                    </div>
+                    <div class="recommendation-card">
+                        <img src="assets/images/album4.jpg" alt="Album Cover">
+                        <p>Currents</p>
+                        <span>Tame Impala</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Player -->
+        <footer class="player">
+            <div class="player-left">
+                <img src="assets/images/album1.jpeg" alt="Album Cover" class="album-cover">
+                <div class="song-info">
+                    <p class="song-title">Mean It</p>
+                    <p class="song-artist">Lauv (Featuring LANY)</p>
+                </div>
+            </div>
+            <div class="player-center">
+                <div class="controls">
+                    <button class="btn previous">⏮</button>
+                    <button class="btn play">▶</button>
+                    <button class="btn next">⏭</button>
+                </div>
+                <div class="progress">
+                    <span class="current-time">0:00</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <span class="duration">3:53</span>
+                </div>
+            </div>
+            <div class="player-right">
+                <button class="btn volume">🔊</button>
+                <input type="range" class="volume-slider" min="0" max="100" value="50">
+            </div>
+
+            <audio id="audio-player" src="assets/music/Mean It.mp4"></audio>
+
+        </footer>
+    </div>
+
+    <!-- JavaScript-->
+    <script src="script.js"></script>
+</body>
+</html>
