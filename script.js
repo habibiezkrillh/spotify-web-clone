@@ -1,26 +1,30 @@
-// Spotify Clone - Player Interaction
+// Elemen DOM
 const audioPlayer = document.getElementById('audio-player');
 const playButton = document.querySelector('.btn.play');
-const progressBar = document.querySelector('.progress-fill');
-const currentTimeElem = document.querySelector('.current-time');
-const durationElem = document.querySelector('.duration');
+const previousButton = document.querySelector('.btn.previous');
+const nextButton = document.querySelector('.btn.next');
+const songTitle = document.querySelector('.song-title');
+const songArtist = document.querySelector('.song-artist');
 
-// Format waktu (mm:ss)
-const formatTime = (time) => {
-  const minutes = Math.floor(time / 60);
-  const seconds = Math.floor(time % 60).toString().padStart(2, '0');
-  return `${minutes}:${seconds}`;
+// Daftar lagu
+const playlist = [
+  { title: "Mean It", artist: "Lauv (Featuring LANY)", src: "assets/music/Mean It.mp4" },
+  { title: "Hanya Untukmu", artist: "RAN", src: "assets/music/Hanya Untukmu.mp4" },
+  { title: "California", artist: "Rich Brian, Warren Hue, & NIKI", src: "assets/music/California.mp4" }
+];
+
+let currentIndex = 0; // Indeks lagu yang sedang diputar
+
+// Fungsi untuk memuat lagu
+const loadSong = (index) => {
+  const song = playlist[index];
+  audioPlayer.src = song.src;
+  songTitle.textContent = song.title;
+  songArtist.textContent = song.artist;
 };
 
-// Update progress bar dan waktu
-audioPlayer.addEventListener('timeupdate', () => {
-  const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-  progressBar.style.width = `${progress}%`;
-  currentTimeElem.textContent = formatTime(audioPlayer.currentTime);
-});
-
-// Play/Pause lagu
-playButton.addEventListener('click', () => {
+// Fungsi Play/Pause
+const togglePlay = () => {
   if (audioPlayer.paused) {
     audioPlayer.play();
     playButton.textContent = '⏸'; // Ikon pause
@@ -28,9 +32,30 @@ playButton.addEventListener('click', () => {
     audioPlayer.pause();
     playButton.textContent = '▶'; // Ikon play
   }
-});
+};
 
-// Load metadata (durasi)
-audioPlayer.addEventListener('loadedmetadata', () => {
-  durationElem.textContent = formatTime(audioPlayer.duration);
-});
+// Fungsi Next
+const playNext = () => {
+  currentIndex = (currentIndex + 1) % playlist.length; // Pindah ke lagu berikutnya (loop)
+  loadSong(currentIndex);
+  audioPlayer.play();
+  playButton.textContent = '⏸'; // Ubah ikon menjadi pause
+};
+
+// Fungsi Previous
+const playPrevious = () => {
+  currentIndex = (currentIndex - 1 + playlist.length) % playlist.length; // Pindah ke lagu sebelumnya (loop)
+  loadSong(currentIndex);
+  audioPlayer.play();
+  playButton.textContent = '⏸'; // Ubah ikon menjadi pause
+};
+
+// Event Listener
+playButton.addEventListener('click', togglePlay);
+nextButton.addEventListener('click', playNext);
+previousButton.addEventListener('click', playPrevious);
+
+// Muat lagu pertama saat halaman dimuat
+window.onload = () => {
+  loadSong(currentIndex);
+};
