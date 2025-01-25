@@ -12,12 +12,14 @@ const progressFill = document.querySelector('.progress-fill');
 
 // Daftar lagu
 const playlist = [
-  { title: "Mean It", artist: "Lauv (Featuring LANY)", src: "assets/music/Mean It.mp4" },
-  { title: "Hanya Untukmu", artist: "RAN", src: "assets/music/Hanya Untukmu.mp4" },
-  { title: "California", artist: "Rich Brian, Warren Hue, & NIKI", src: "assets/music/California.mp4" }
+  { title: "Mean It", artist: "Lauv (Featuring LANY)", src: "assets/music/Mean It.mp4", cover: "assets/images/album1.jpeg"},
+  { title: "Hanya Untukmu", artist: "RAN", src: "assets/music/Hanya Untukmu.mp4", cover: "assets/images/album5.jpeg" },
+  { title: "California", artist: "Rich Brian, Warren Hue, & NIKI", src: "assets/music/California.mp4", cover: "assets/images/album6.jpeg" }
 ];
 
 let currentIndex = 0; // Indeks lagu yang sedang diputar
+
+const albumCover = document.querySelector('.album-cover');
 
 // Fungsi untuk memuat lagu
 const loadSong = (index) => {
@@ -25,6 +27,9 @@ const loadSong = (index) => {
   audioPlayer.src = song.src;
   songTitle.textContent = song.title;
   songArtist.textContent = song.artist;
+
+  // Ganti album cover
+  albumCover.src = song.cover;
 
   // Reset progress bar
   progressFill.style.width = '0%';
