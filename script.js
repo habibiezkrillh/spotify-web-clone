@@ -108,3 +108,44 @@ audioPlayer.addEventListener('timeupdate', updateProgress); // Perbarui progress
 window.onload = () => {
   loadSong(currentIndex);
 };
+
+let isShuffle = false;
+let isRepeat = false;
+
+const shuffleButton = document.querySelector('.shuffle');
+const repeatButton = document.querySelector('.repeat');
+
+// Tombol Shuffle
+shuffleButton.addEventListener('click', () => {
+  isShuffle = !isShuffle;
+  shuffleButton.classList.toggle('active', isShuffle); // Highlight tombol jika aktif
+  console.log(`Shuffle: ${isShuffle ? 'ON' : 'OFF'}`);
+});
+
+// Tombol Repeat
+repeatButton.addEventListener('click', () => {
+  isRepeat = !isRepeat;
+  repeatButton.classList.toggle('active', isRepeat); // Highlight tombol jika aktif
+  console.log(`Repeat: ${isRepeat ? 'ON' : 'OFF'}`);
+});
+
+// Modifikasi fungsi Next
+const playNextSong = () => {
+  if (isShuffle) {
+    currentSongIndex = Math.floor(Math.random() * playlist.length); // Pilih lagu secara acak
+  } else {
+    currentSongIndex = (currentSongIndex + 1) % playlist.length; // Putar lagu berikutnya
+  }
+  loadSong(currentSongIndex);
+  audioPlayer.play();
+};
+
+// Event ketika lagu selesai diputar
+audioPlayer.addEventListener('ended', () => {
+  if (isRepeat) {
+    audioPlayer.currentTime = 0; // Ulangi lagu yang sama
+    audioPlayer.play();
+  } else {
+    playNextSong();
+  }
+});

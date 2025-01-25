@@ -252,3 +252,17 @@
     transform: scale(1.2);
     transition: all 0.2s ease;
   }
+  .controls .btn {
+    background: none;
+    border: none;
+    color: #b3b3b3;
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  .controls .btn.active {
+    color: #1DB954;
+  }
+  .controls .btn:hover {
+    color: #1DB954;
+  }
